@@ -1,0 +1,6 @@
+framework module Pods_movietime {
+  umbrella header "Pods-movietime-umbrella.h"
+
+  export *
+  module * { export * }
+}
