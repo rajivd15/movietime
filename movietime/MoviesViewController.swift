@@ -21,6 +21,11 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         super.viewDidLoad()
         print("I am here")
         
+        //UI Refresh Control 
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(refreshControlAction(_:)), forControlEvents: UIControlEvents.ValueChanged)
+        tableView.insertSubview(refreshControl, atIndex: 0)
+        
         tableView.dataSource = self
         tableView.delegate = self
         tableView.rowHeight = 100
@@ -78,10 +83,43 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
             }
             
         }
-    
-//        cell.movieTitle.text = movies[indexPath.row]["title"] as? String
-//        cell.movieDescription.text = movies[indexPath.row]["overview"] as? String
         return cell
+    }
+    
+    // Makes a network request to get updated data
+    // Updates the tableView with the new data
+    // Hides the RefreshContro
+    func refreshControlAction(refreshControl: UIRefreshControl) {
+        
+        let clientId = "3cca78394a9e5331dcca77881cc68d5d"
+        let url = NSURL(string:"https://api.themoviedb.org/3/movie/now_playing?api_key=\(clientId)")
+        let request = NSURLRequest(URL: url!)
+        let session = NSURLSession(
+            configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
+            delegate:nil,
+            delegateQueue:NSOperationQueue.mainQueue()
+        )
+        
+        let task : NSURLSessionDataTask = session.dataTaskWithRequest(request,
+                                                                      completionHandler: { (dataOrNil, response, error) in
+                                                                        if let data = dataOrNil {
+                                                                            if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
+                                                                                data, options:[]) as? NSDictionary {
+                                                                                
+                                                                                if let moviesFetch = responseDictionary["results"] as? [NSDictionary] {
+                                                                                    self.movies = moviesFetch
+                                                                                    NSLog("response: \(self.movies)")
+                                                                                    self.tableView.reloadData()
+                                                                                    
+                                                                                    // Tell the refreshControl to stop spinning
+                                                                                    refreshControl.endRefreshing()
+                                                                                }
+                                                                            }
+                                                                        }
+        });
+        task.resume()
+
+        
     }
 }
 
