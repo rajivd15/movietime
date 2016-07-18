@@ -8,6 +8,7 @@
 
 import UIKit
 import AFNetworking
+import MBProgressHUD
 
 class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -40,8 +41,14 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
             delegateQueue:NSOperationQueue.mainQueue()
         )
         
+        // Display HUD right before the request is made
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         let task : NSURLSessionDataTask = session.dataTaskWithRequest(request,
                                                                       completionHandler: { (dataOrNil, response, error) in
+                                                                        
+                                                                        // Hide HUD once the network request comes back (must be done on main UI thread)
+                                                                        MBProgressHUD.hideHUDForView(self.view, animated: true)
+                                                                        
                                                                         if let data = dataOrNil {
                                                                             if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
                                                                                 data, options:[]) as? NSDictionary {
@@ -98,9 +105,15 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
             delegate:nil,
             delegateQueue:NSOperationQueue.mainQueue()
         )
-        
+
+        // Display HUD right before the request is made
+        MBProgressHUD.showHUDAddedTo(self.view, animated: true)
         let task : NSURLSessionDataTask = session.dataTaskWithRequest(request,
                                                                       completionHandler: { (dataOrNil, response, error) in
+                                                                        
+                                                                        // Hide HUD once the network request comes back (must be done on main UI thread)
+                                                                        MBProgressHUD.hideHUDForView(self.view, animated: true)
+                                                                        
                                                                         if let data = dataOrNil {
                                                                             if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
                                                                                 data, options:[]) as? NSDictionary {
