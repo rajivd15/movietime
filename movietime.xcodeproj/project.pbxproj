@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05666F601D3C4B8400D3F31F /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05666F5F1D3C4B8400D3F31F /* MovieDetailViewController.swift */; };
 		05B4EB7F1D399CD300337CD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B4EB7E1D399CD300337CD2 /* AppDelegate.swift */; };
 		05B4EB811D399CD300337CD2 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B4EB801D399CD300337CD2 /* MoviesViewController.swift */; };
 		05B4EB841D399CD300337CD2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 05B4EB821D399CD300337CD2 /* Main.storyboard */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		05666F5F1D3C4B8400D3F31F /* MovieDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		05B4EB7B1D399CD300337CD2 /* movietime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = movietime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05B4EB7E1D399CD300337CD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		05B4EB801D399CD300337CD2 /* MoviesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewController.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				05B4EB851D399CD300337CD2 /* Assets.xcassets */,
 				05B4EB871D399CD300337CD2 /* LaunchScreen.storyboard */,
 				05B4EB8A1D399CD300337CD2 /* Info.plist */,
+				05666F5F1D3C4B8400D3F31F /* MovieDetailViewController.swift */,
 			);
 			path = movietime;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				05666F601D3C4B8400D3F31F /* MovieDetailViewController.swift in Sources */,
 				05B4EB811D399CD300337CD2 /* MoviesViewController.swift in Sources */,
 				05B4EB7F1D399CD300337CD2 /* AppDelegate.swift in Sources */,
 				05B4EB951D3B060000337CD2 /* MovieTableViewCell.swift in Sources */,

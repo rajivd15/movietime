@@ -77,9 +77,8 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
             cell.movieDescriptionLabel.text = movieFetched["overview"] as? String
             
             if let posterPathFetched = movieFetched["poster_path"] as? String {
-                let imageUrlString = poster_path + posterPathFetched
-                let url = NSURL(string: imageUrlString)
-                cell.movieImageView.setImageWithURL(url!)
+                let posterURL = NSURL(string: poster_path + posterPathFetched)
+                cell.movieImageView.setImageWithURL(posterURL!)
             }
             
         }
@@ -118,8 +117,29 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                                                                         }
         });
         task.resume()
-
-        
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        //Get rid of the gray selection effect by deselecting the cell with animation
+        tableView.deselectRowAtIndexPath(indexPath, animated:true)
+    }
+    
+    
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+        print("prepare for segue")
+        
+        let cell = sender as! UITableViewCell
+        let indexPath = tableView.indexPathForCell(cell)
+        let movie = movies[(indexPath?.row)!]
+        
+        let movieDetailViewController = segue.destinationViewController as! MovieDetailViewController
+        movieDetailViewController.movie = movie
+     }
+
 }
 
