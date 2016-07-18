@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import Foundation
 import AFNetworking
 import MBProgressHUD
 
 class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+    
+    @IBOutlet weak var networkErrorLabel: UILabel!
 
     var movies : [NSDictionary]! = [NSDictionary]()
     let poster_path : String = "https://image.tmdb.org/t/p/w342/"
@@ -20,7 +23,15 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("I am here")
+        //print("I am here")
+        
+        if Reachability.isConnectedToNetwork() == true {
+            print("Internet connection OK")
+            self.networkErrorLabel.hidden = true
+        } else {
+            print("Network Error!")
+            self.networkErrorLabel.hidden = false
+        }
         
         //UI Refresh Control 
         let refreshControl = UIRefreshControl()
@@ -97,6 +108,15 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
     // Hides the RefreshContro
     func refreshControlAction(refreshControl: UIRefreshControl) {
         
+        
+        if Reachability.isConnectedToNetwork() == true {
+            print("Internet connection OK")
+            self.networkErrorLabel.hidden = true
+        } else {
+            print("Network Error!")
+            self.networkErrorLabel.hidden = false
+        }
+        
         let clientId = "3cca78394a9e5331dcca77881cc68d5d"
         let url = NSURL(string:"https://api.themoviedb.org/3/movie/now_playing?api_key=\(clientId)")
         let request = NSURLRequest(URL: url!)
@@ -153,6 +173,5 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         let movieDetailViewController = segue.destinationViewController as! MovieDetailViewController
         movieDetailViewController.movie = movie
      }
-
 }
 

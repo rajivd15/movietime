@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		05053DBB1D3D824A004CD122 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05053DBA1D3D824A004CD122 /* Reachability.swift */; };
 		05666F601D3C4B8400D3F31F /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05666F5F1D3C4B8400D3F31F /* MovieDetailViewController.swift */; };
 		05B4EB7F1D399CD300337CD2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B4EB7E1D399CD300337CD2 /* AppDelegate.swift */; };
 		05B4EB811D399CD300337CD2 /* MoviesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05B4EB801D399CD300337CD2 /* MoviesViewController.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		05053DBA1D3D824A004CD122 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		05666F5F1D3C4B8400D3F31F /* MovieDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		05B4EB7B1D399CD300337CD2 /* movietime.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = movietime.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		05B4EB7E1D399CD300337CD2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 				05B4EB871D399CD300337CD2 /* LaunchScreen.storyboard */,
 				05B4EB8A1D399CD300337CD2 /* Info.plist */,
 				05666F5F1D3C4B8400D3F31F /* MovieDetailViewController.swift */,
+				05053DBA1D3D824A004CD122 /* Reachability.swift */,
 			);
 			path = movietime;
 			sourceTree = "<group>";
@@ -219,6 +222,7 @@
 				05666F601D3C4B8400D3F31F /* MovieDetailViewController.swift in Sources */,
 				05B4EB811D399CD300337CD2 /* MoviesViewController.swift in Sources */,
 				05B4EB7F1D399CD300337CD2 /* AppDelegate.swift in Sources */,
+				05053DBB1D3D824A004CD122 /* Reachability.swift in Sources */,
 				05B4EB951D3B060000337CD2 /* MovieTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
