@@ -13,6 +13,10 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var moviePosterImageView: UIImageView!
     @IBOutlet weak var detailOverviewLabel: UILabel!
     @IBOutlet weak var detailTitleLabel: UILabel!
+    @IBOutlet weak var infoView: UIView!
+    
+    @IBOutlet weak var detailScrollView: UIScrollView!
+    
     let poster_path : String = "https://image.tmdb.org/t/p/w342/"
 
     var movie : NSDictionary!
@@ -21,12 +25,15 @@ class MovieDetailViewController: UIViewController {
         super.viewDidLoad()
 
         print(movie)
+        detailScrollView.contentSize = CGSize(width: detailScrollView.frame.size.width, height: infoView.frame.origin.y + infoView.frame.size.height)
         
         let title = movie["title"] as! String
         detailTitleLabel.text = title
 
         let overview = movie["overview"] as! String
         detailOverviewLabel.text = overview
+        detailOverviewLabel.sizeToFit()
+        
 
         if let posterPathFetched = movie["poster_path"] as? String {
             let posterURL = NSURL(string: poster_path + posterPathFetched)
